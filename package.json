@@ -24,7 +24,14 @@
     "serve": "node ./bin/nexus-pilot-cortex.js serve",
     "install:agents": "node ./bin/nexus-pilot-cortex.js install",
     "doctor": "node ./bin/nexus-pilot-cortex.js doctor",
-    "test": "python tests/run_tests.py"
+    "test": "python tests/run_tests.py",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "homepage": "https://nishantshaligram.github.io/nexus-pilot-cortex/",
+  "devDependencies": {
+    "vitepress": "^1.5.0"
   },
   "keywords": [
     "ai-agent",

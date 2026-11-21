@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.git/
+.github/
+docs/
+tests/
+data/
+*.log
+.DS_Store
+Thumbs.db
