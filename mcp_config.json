@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "nexus-pilot-cortex": {
+      "command": "python",
+      "args": ["${PLUGIN_ROOT}/server/cortex_server.py"],
+      "description": "NexusPilot Cortex Telemetry, Memory & Context Compressor Engine"
+    }
+  }
+}

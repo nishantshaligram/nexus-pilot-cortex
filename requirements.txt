@@ -1,0 +1,4 @@
+# Optional enhancements for NexusPilot Cortex
+# The core server operates with standard library Python (3.10+) with zero required external dependencies.
+tiktoken>=0.7.0
+pytest>=7.0.0
