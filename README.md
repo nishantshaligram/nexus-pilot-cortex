@@ -12,7 +12,7 @@
 
 ## 🌟 Overview
 
-`NexusPilot: Cortex` is the cognitive middleware for Antigravity agents. While **NexusPilot Desktop** acts as the agent's hands (GUI and Windows UI automation), **Cortex** acts as its brain and efficiency governor, delivering three foundational capabilities:
+`NexusPilot: Cortex` is the cognitive middleware for Antigravity agents. While **NexusPilot: Desktop** acts as the agent's hands (GUI and Windows UI automation), **Cortex** acts as its brain and efficiency governor, delivering three foundational capabilities:
 
 1. **Per-Response Token Telemetry & Badging:** Instant visibility into input prompt tokens, cached tokens, output tokens, total tokens, latency, generation speed, and estimated USD cost.
 2. **Autonomous Long-Term Memory (Autonomous Long-Term Memory):** Persistent local SQLite memory that automatically learns user preferences, project conventions, and negative constraints across sessions.
@@ -169,7 +169,7 @@ NexusPilot Cortex is the cognitive governor of the modular **NexusPilot Suite** 
 
 | Component | Role | GitHub Repository | Description |
 | :--- | :--- | :--- | :--- |
-| 🖥️ **NexusPilot Desktop** | **The Hands** | [`nishantshaligram/NexusPilot`](https://github.com/nishantshaligram/NexusPilot) | Universal Windows UI Automation, dual-modal perception, mouse actuation & foreground visual HUD. |
+| 🖥️ **NexusPilot: Desktop** | **The Hands** | [`nishantshaligram/nexus-pilot-desktop`](https://github.com/nishantshaligram/nexus-pilot-desktop) | Universal Windows UI Automation, dual-modal perception, mouse actuation & foreground visual HUD. |
 | 🧠 **NexusPilot Cortex** | **The Brain** | [`nishantshaligram/nexus-pilot-cortex`](https://github.com/nishantshaligram/nexus-pilot-cortex) | Cognitive telemetry badging, persistent long-term memory (NexusMem), and adaptive context compression. |
 | ⚡ **NexusPilot Fleet** | **The Grid** | [`nishantshaligram/nexus-pilot-fleet`](https://github.com/nishantshaligram/nexus-pilot-fleet) | Distributed multi-agent swarm orchestrator, zero-collision Git worktree multiplexing, DAG scheduling & Two-Key consensus. |
 | 📊 **NexusPilot Benchmarks** | **Validation** | [`nishantshaligram/nexus-pilot-benchmarks`](https://github.com/nishantshaligram/nexus-pilot-benchmarks) | Reproducible empirical benchmark harness and competitive leaderboard against industry baselines. |
