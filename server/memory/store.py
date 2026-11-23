@@ -24,7 +24,7 @@ class MemoryStore:
         workspace_uri: Optional[str] = None,
         pinned: bool = False
     ) -> str:
-        kw_tokens = re.findall(r"[a-zA-Z0-9_]+", f"{subject} {fact}".lower())
+        kw_tokens = re.findall(r"[a-zA-Z0-9]+", f"{subject} {fact}".replace("_", " ").lower())
         keywords = " ".join(set(kw_tokens))
         mem_id = generate_memory_id(subject, fact)
         
@@ -73,7 +73,7 @@ class MemoryStore:
         if not all_memories or not query:
             return all_memories[:limit]
 
-        query_tokens = set(re.findall(r"[a-zA-Z0-9_]+", query.lower()))
+        query_tokens = set(re.findall(r"[a-zA-Z0-9]+", query.replace("_", " ").lower()))
         if not query_tokens:
             return all_memories[:limit]
 
@@ -81,8 +81,8 @@ class MemoryStore:
         scored = []
 
         for m in all_memories:
-            mem_keywords = set(m.get("keywords", "").split())
-            fact_tokens = set(re.findall(r"[a-zA-Z0-9_]+", m["fact"].lower()))
+            mem_keywords = set(m.get("keywords", "").replace("_", " ").split())
+            fact_tokens = set(re.findall(r"[a-zA-Z0-9]+", f"{m.get('subject', '')} {m['fact']}".replace("_", " ").lower()))
             overlap = query_tokens.intersection(mem_keywords.union(fact_tokens))
             
             # Base match score

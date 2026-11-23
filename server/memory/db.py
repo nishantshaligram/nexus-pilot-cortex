@@ -99,12 +99,19 @@ class MemoryDatabase:
     ) -> str:
         now = int(time.time())
         with self._get_connection() as conn:
-            # Check if memory already exists with matching subject and workspace
             cur = conn.cursor()
-            cur.execute(
-                "SELECT id FROM memories WHERE scope = ? AND (workspace_uri = ? OR workspace_uri IS NULL) AND subject = ?",
-                (scope, workspace_uri, subject)
-            )
+            # If subject is a specific domain key (not generic), check for existing memory to update/supersede
+            # For generic subjects, avoid accidental collisions and only update identical id or exact fact
+            if subject and subject.lower() not in ("custom", "general", "explicit_memory", "user_fact"):
+                cur.execute(
+                    "SELECT id FROM memories WHERE scope = ? AND (workspace_uri = ? OR workspace_uri IS NULL) AND subject = ?",
+                    (scope, workspace_uri, subject)
+                )
+            else:
+                cur.execute(
+                    "SELECT id FROM memories WHERE id = ? OR (scope = ? AND (workspace_uri = ? OR workspace_uri IS NULL) AND fact = ?)",
+                    (mem_id, scope, workspace_uri, fact)
+                )
             row = cur.fetchone()
             if row:
                 existing_id = row["id"]

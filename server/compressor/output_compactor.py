@@ -46,6 +46,8 @@ def fold_stack_traces(text: str) -> str:
     vendor_patterns = [
         r"node_modules",
         r"site-packages",
+        r"node:internal",
+        r"internal/process",
         r"internal/modules",
         r"/lib/python[0-9]\.[0-9]+/",
         r"\\Python[0-9]+\\lib\\",
@@ -99,11 +101,12 @@ def compress_output(raw_text: str, max_chars: int = 5000) -> Tuple[str, Dict[str
     stage2 = fold_stack_traces(stage1)
     stage3 = compact_diff(stage2)
 
-    # If still exceeding max_chars, retain top 60% and tail 40% with an informative gap
+    # If still exceeding max_chars, prioritize the tail (where exceptions, stack traces, and exit codes reside)
     final_text = stage3
     if len(final_text) > max_chars:
-        head_chars = int(max_chars * 0.6)
-        tail_chars = int(max_chars * 0.4)
+        # Give 30% to initialization header context, and 70% to terminal error diagnostics
+        head_chars = int(max_chars * 0.30)
+        tail_chars = max_chars - head_chars
         omitted = len(final_text) - (head_chars + tail_chars)
         final_text = (
             final_text[:head_chars]
