@@ -15,8 +15,8 @@
 `NexusPilot: Cortex` is the cognitive middleware for Antigravity agents. While **NexusPilot Desktop** acts as the agent's hands (GUI and Windows UI automation), **Cortex** acts as its brain and efficiency governor, delivering three foundational capabilities:
 
 1. **Per-Response Token Telemetry & Badging:** Instant visibility into input prompt tokens, cached tokens, output tokens, total tokens, latency, generation speed, and estimated USD cost.
-2. **Autonomous Long-Term Memory (*claude-mem* parity):** Persistent local SQLite memory that automatically learns user preferences, project conventions, and negative constraints across sessions.
-3. **Adaptive Context & Output Compressor (*headroom* parity):** Collapses repetitive logs, folds vendor stack frames, and enforces Gemini prefix caching alignment to eliminate context cliffs and save 35–65% of billed tokens.
+2. **Autonomous Long-Term Memory (Autonomous Long-Term Memory):** Persistent local SQLite memory that automatically learns user preferences, project conventions, and negative constraints across sessions.
+3. **Adaptive Context & Output Compressor (Adaptive Context Compression):** Collapses repetitive logs, folds vendor stack frames, and enforces Gemini prefix caching alignment to eliminate context cliffs and save 35–65% of billed tokens.
 
 ---
 
@@ -33,15 +33,15 @@ Token Telemetry: In: 3.1k | Cache: 83.7k | Out: 225 | Total: 87.0k
   ```
 * **Live Pricing:** Tracks costs against current Gemini 1.5/2.0, Claude 3.5 Sonnet, and GPT-4o pricing tiers.
 
-### 2. Autonomous Memory Governor (*"claude-mem"*)
+### 2. Autonomous Memory Governor (NexusMem Engine)
 * **Multi-Tiered Memory:** Organizes knowledge into `preference`, `architecture`, `episodic`, and `constraint`.
 * **Zero-Shot Fact Extraction:** Heuristic extractor automatically detects statements like *"Always use pnpm"*, *"Our DB is Postgres on port 5432"*, or *"Never touch legacy directory `v1/`"*.
 * **Semantic Retrieval & Pinned Boost:** BM25 keyword matching with recency decay prioritizes critical conventions and injects them into Antigravity context.
 
-### 3. Context & Headroom Compressor (*"headroom"*)
+### 3. Context & capacity Compressor (Adaptive Compression Engine)
 * **Output Compaction:** Collapses redundant logs (`... [repeated 42 times] ...`), folds external stack traces (`node_modules`, `site-packages`), and cleans git diffs.
 * **Gemini Prefix Cache Aligner:** Preserves cache breakpoints by ensuring static system rules precede dynamic session turns, achieving **85–95%+ cache hit rates**.
-* **Headroom Cliff Guard:** Monitored headroom triggers proactive consolidation before hitting token thresholds.
+* **Context Cliff Guard:** Monitored capacity triggers proactive consolidation before hitting token thresholds.
 
 ---
 
@@ -61,7 +61,7 @@ nexus-pilot-cortex/
 ├── skills/
 │   ├── token-telemetry/        # Telemetry & badge inspection
 │   ├── memory-governor/        # Memory search, recall, and persistence
-│   └── context-compressor/     # Context pruning and headroom governor
+│   └── context-compressor/     # Context pruning and capacity governor
 ├── server/
 │   ├── cortex_server.py        # Central FastMCP/MCPServer entry point
 │   ├── telemetry/              # Turn counter, pricing calculator, badge renderer
@@ -140,7 +140,7 @@ python tests/run_tests.py -v
 | `auto_extract_and_remember`| Memory | Scans text for learnable patterns automatically |
 | `get_memory_context_injection`| Memory | Returns formatted markdown block for prompt context |
 | `compress_tool_output` | Compression | Collapses noisy CLI logs, stack traces, and diffs |
-| `check_context_headroom` | Compression | Evaluates remaining context capacity and cliff warnings |
+| `check_context_budget` | Compression | Evaluates remaining context capacity and cliff warnings |
 | `check_cortex_health` | Diagnostic | Returns engine status, DB path, and memory count |
 
 ---
@@ -150,7 +150,7 @@ python tests/run_tests.py -v
 | Component | Role | Description |
 | :--- | :--- | :--- |
 | **`nexus-pilot`** | Hands | Computer-Use, Windows UI Automation, Vision, Foreground HUD |
-| **`nexus-pilot-cortex`** | Brain | Telemetry, Memory Governor, Headroom Context Compression |
+| **`nexus-pilot-cortex`** | Brain | Telemetry, Memory Governor, capacity Context Compression |
 | **`nexus-pilot-phantomcorp`** | Shadow | Headless Background Workers, Synthetic QA & Security Swarms |
 | **`nexus-pilot-fleet`** | Grid | Distributed Swarm Orchestrator, DAG Scheduler, Worktree Multiplexing |
 

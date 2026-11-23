@@ -26,7 +26,7 @@ This copies the plugin bundle to:
 | :--- | :--- | :--- |
 | `token-telemetry` | `skills/token-telemetry/` | Real-time token usage, per-response badge generation, and cost auditing. |
 | `memory-governor` | `skills/memory-governor/` | Semantic memory recall, zero-shot fact extraction, and context injection. |
-| `context-compressor` | `skills/context-compressor/` | Log folding, stack frame reduction, and headroom management. |
+| `context-compressor` | `skills/context-compressor/` | Log folding, stack frame reduction, and capacity management. |
 
 ---
 

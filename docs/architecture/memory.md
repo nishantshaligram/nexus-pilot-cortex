@@ -1,6 +1,6 @@
 # Architecture: Autonomous Memory Engine
 
-The Memory Engine brings **claude-mem parity** to open AI agents, enabling cross-session persistence, automatic fact extraction, and progressive context injection.
+The Memory Engine brings **NexusMem autonomous persistence** to open AI agents, enabling cross-session persistence, automatic fact extraction, and progressive context injection.
 
 ---
 

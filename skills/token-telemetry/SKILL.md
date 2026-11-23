@@ -9,7 +9,7 @@ This skill provides real-time visibility into LLM token consumption, prompt cach
 
 ## When to Use
 - Appending the per-response token telemetry badge to user turns.
-- Inspecting session or workspace token spend and budget headroom.
+- Inspecting session or workspace token spend and token budget.
 - Auditing prompt caching performance across multi-turn workflows.
 
 ## Key Tools

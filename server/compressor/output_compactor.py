@@ -1,5 +1,5 @@
 """
-NexusPilot Cortex - Tool Output Compactor (Headroom Parity)
+NexusPilot Cortex - Tool Output Compactor (Adaptive Context Compression)
 Compresses terminal logs, diffs, JSON, and stack traces to preserve context window.
 """
 
@@ -107,7 +107,7 @@ def compress_output(raw_text: str, max_chars: int = 5000) -> Tuple[str, Dict[str
         omitted = len(final_text) - (head_chars + tail_chars)
         final_text = (
             final_text[:head_chars]
-            + f"\n\n... [NexusPilot Cortex: {omitted} characters omitted for context headroom] ...\n\n"
+            + f"\n\n... [NexusPilot Cortex: {omitted} characters omitted for context capacity] ...\n\n"
             + final_text[-tail_chars:]
         )
 

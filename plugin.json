@@ -1,7 +1,7 @@
 {
   "name": "nexus-pilot-cortex",
   "displayName": "NexusPilot Cortex (Telemetry, Memory & Compression)",
-  "description": "Cognitive engine for Antigravity: real-time per-response token telemetry badging, persistent claude-mem style memory, and headroom context compression.",
+  "description": "Cognitive engine for Antigravity: real-time per-response token telemetry badging, persistent NexusMem autonomous memory, and capacity context compression.",
   "version": "1.0.0",
   "author": {
     "name": "Nishant Shaligram",
@@ -13,6 +13,6 @@
   "suggestedPrompts": [
     "Show token usage telemetry for this session",
     "List all persistent memories remembered for this project",
-    "Compress recent tool output to save context headroom"
+    "Compress recent tool output to save context capacity"
   ]
 }

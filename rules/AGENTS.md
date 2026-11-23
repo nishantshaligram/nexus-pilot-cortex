@@ -18,6 +18,6 @@ These directives govern agent memory management, token telemetry badging, and co
 - When a user corrects a mistake or declares a preference (e.g., *"Always use pnpm"*, *"Our DB is Postgres 16"*), immediately record it using `remember_fact(...)` or `auto_extract_and_remember(...)`.
 - Acknowledge remembered facts concisely without cluttering the conversation.
 
-## Rule 4: High-Entropy Output Compaction (Context Headroom)
+## Rule 4: High-Entropy Output Compaction (context capacity)
 - When capturing or relaying large tool outputs (test suites, stack traces, compiler errors, large JSON dumps, git diffs), use `compress_tool_output(...)` to fold vendor frames and collapse repetitive errors.
 - Never flood the context window with raw dumps exceeding 100 lines without summarization.

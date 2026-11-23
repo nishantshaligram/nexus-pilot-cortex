@@ -1,7 +1,7 @@
 # Contributing to NexusPilot Cortex
 
 Thank you for your interest in contributing to **NexusPilot Cortex**!  
-Cortex is an open-source cognitive middleware providing AI agents with real-time token telemetry badging, persistent long-term memory (*claude-mem* parity), and adaptive context compression (*headroom* parity).
+Cortex is an open-source cognitive middleware providing AI agents with real-time token telemetry badging, persistent long-term memory (Autonomous Long-Term Memory), and adaptive context compression (Adaptive Context Compression).
 
 ---
 

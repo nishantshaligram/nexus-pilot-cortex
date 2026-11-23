@@ -8,10 +8,10 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/nexus-pilot-cortex/assets/logo.svg' }],
     ['meta', { name: 'author', content: 'Nishant Shaligram' }],
-    ['meta', { name: 'keywords', content: 'ai agent, mcp, model context protocol, claude-mem, headroom, token counter, context compression, prompt caching, antigravity, claude code, cursor ide, windsurf' }],
+    ['meta', { name: 'keywords', content: 'ai agent, mcp, model context protocol, NexusMem, capacity, token counter, context compression, prompt caching, antigravity, claude code, cursor ide, windsurf' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'NexusPilot Cortex - Cognitive Engine for AI Agents' }],
-    ['meta', { property: 'og:description', content: 'Per-response token telemetry, claude-mem style persistent long-term memory, and headroom-style context compression.' }],
+    ['meta', { property: 'og:description', content: 'Per-response token telemetry, NexusMem autonomous persistent long-term memory, and Adaptive context compression.' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
   ],
 
@@ -47,7 +47,7 @@ export default defineConfig({
         items: [
           { text: 'Token Telemetry Engine', link: '/architecture/telemetry' },
           { text: 'Autonomous Memory Engine', link: '/architecture/memory' },
-          { text: 'Context & Headroom Compressor', link: '/architecture/compressor' }
+          { text: 'Context & capacity Compressor', link: '/architecture/compressor' }
         ]
       },
       {

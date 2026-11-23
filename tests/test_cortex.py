@@ -14,7 +14,7 @@ if SERVER_DIR not in sys.path:
 
 from telemetry import TelemetryTracker, render_badge, estimate_token_count, format_token_number
 from memory import MemoryStore, MemoryDatabase, extract_facts_from_text
-from compressor import compress_output, collapse_repeated_lines, fold_stack_traces, CacheAndHeadroomAligner
+from compressor import compress_output, collapse_repeated_lines, fold_stack_traces, CacheAndContextAligner
 
 
 def test_token_number_formatter():
@@ -88,13 +88,13 @@ def test_output_compactor():
     assert "repeated" in compressed or "framework" in compressed
 
 
-def test_headroom_aligner():
-    aligner = CacheAndHeadroomAligner(context_limit=1_000_000, headroom_warning_pct=75.0)
-    safe = aligner.check_headroom(100_000)
+def test_context_aligner():
+    aligner = CacheAndContextAligner(context_limit=1_000_000, capacity_warning_pct=75.0)
+    safe = aligner.check_budget(100_000)
     assert safe["status"] == "SAFE"
 
-    warn = aligner.check_headroom(800_000)
+    warn = aligner.check_budget(800_000)
     assert warn["status"] == "WARNING"
 
-    crit = aligner.check_headroom(950_000)
+    crit = aligner.check_budget(950_000)
     assert crit["status"] == "CRITICAL"

@@ -2,8 +2,8 @@
 NexusPilot Cortex - Model Context Protocol (MCP) Server
 Unified Cognitive Engine for Antigravity:
 1. Token Telemetry & Per-Response Badging
-2. Persistent Autonomous Memory (claude-mem parity)
-3. Adaptive Context & Tool Output Compression (headroom parity)
+2. Persistent Autonomous Memory (NexusMem autonomous persistence)
+3. Adaptive Context & Tool Output Compression (Adaptive Context Compression)
 """
 
 import sys
@@ -16,7 +16,7 @@ sys.path.insert(0, CURRENT_DIR)
 
 from telemetry import TelemetryTracker, TokenMetrics, estimate_token_count, render_badge
 from memory import MemoryStore, MemoryDatabase
-from compressor import compress_output, CacheAndHeadroomAligner
+from compressor import compress_output, CacheAndContextAligner
 
 try:
     from mcp.server.mcpserver import MCPServer
@@ -29,7 +29,7 @@ except ImportError:
 # Instantiate core engines
 telemetry_tracker = TelemetryTracker()
 memory_store = MemoryStore()
-headroom_aligner = CacheAndHeadroomAligner()
+context_aligner = CacheAndContextAligner()
 
 server = MCPServer("nexus-pilot-cortex")
 
@@ -98,7 +98,7 @@ def get_telemetry_stats() -> dict:
 def estimate_tokens(text: str) -> dict:
     """
     Estimates the number of tokens in a provided text string.
-    Useful for budgeting context headroom prior to calling large tools.
+    Useful for budgeting context capacity prior to calling large tools.
     """
     count = estimate_token_count(text)
     return {
@@ -108,7 +108,7 @@ def estimate_tokens(text: str) -> dict:
 
 
 # ==============================================================================
-# Pillar 2: Autonomous Memory Management Tools (claude-mem parity)
+# Pillar 2: Autonomous Memory Management Tools (NexusMem autonomous persistence)
 # ==============================================================================
 
 @server.tool()
@@ -210,7 +210,7 @@ def get_memory_context_injection(
 
 
 # ==============================================================================
-# Pillar 3: Context & Headroom Compressor Tools (headroom parity)
+# Pillar 3: Context & capacity Compressor Tools (Adaptive Context Compression)
 # ==============================================================================
 
 @server.tool()
@@ -231,16 +231,16 @@ def compress_tool_output(
 
 
 @server.tool()
-def check_context_headroom(
+def check_context_budget(
     current_tokens: int,
     context_limit: int = 1_000_000
 ) -> dict:
     """
-    Evaluates remaining token headroom against model context limit.
+    Evaluates remaining token capacity against model context limit.
     Flags warning thresholds and provides actionable recommendations to prevent context cutoff.
     """
-    aligner = CacheAndHeadroomAligner(context_limit=context_limit)
-    return aligner.check_headroom(current_tokens)
+    aligner = CacheAndContextAligner(context_limit=context_limit)
+    return aligner.check_budget(current_tokens)
 
 
 @server.tool()

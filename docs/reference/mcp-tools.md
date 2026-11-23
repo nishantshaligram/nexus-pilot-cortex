@@ -63,8 +63,8 @@ Collapses repeated lines, folds framework stack frames, and trims git diffs.
   * `raw_output` (string, required)
   * `max_chars` (integer, optional, default: `4000`)
 
-### `check_context_headroom`
-Evaluates remaining token headroom against context ceilings and returns `"SAFE"`, `"WARNING"`, or `"CRITICAL"`.
+### `check_context_budget`
+Evaluates remaining token capacity against context ceilings and returns `"SAFE"`, `"WARNING"`, or `"CRITICAL"`.
 
 ### `check_cortex_health`
 Diagnostic probe returning engine status, SQLite DB path, memory count, and session spend.

@@ -5,8 +5,8 @@
 ## Overview
 NexusPilot Cortex is an open-source MCP suite and Google Antigravity plugin providing:
 1. Real-time per-response token telemetry badging (In, Cache, Out, Cost, Speed).
-2. Autonomous long-term memory management (claude-mem parity) using embedded SQLite.
-3. Adaptive context compression (headroom parity) folding stack traces, collapsing repetitive logs, and optimizing Gemini prefix caching.
+2. Autonomous long-term memory management (NexusMem autonomous persistence) using embedded SQLite.
+3. Adaptive context compression (Adaptive Context Compression) folding stack traces, collapsing repetitive logs, and optimizing Gemini prefix caching.
 
 ## Key Links
 - GitHub: https://github.com/nishantshaligram/nexus-pilot-cortex
@@ -19,4 +19,4 @@ NexusPilot Cortex is an open-source MCP suite and Google Antigravity plugin prov
 - `search_memories(query, workspace_uri, limit)`: Semantic BM25 retrieval of persistent facts.
 - `remember_fact(fact, subject, category, scope, pinned)`: Saves a memory node.
 - `compress_tool_output(raw_output, max_chars)`: Compresses noisy CLI logs, stack traces, and diffs.
-- `check_context_headroom(current_tokens, context_limit)`: Checks context headroom against model limit.
+- `check_context_budget(current_tokens, context_limit)`: Checks context capacity against model limit.

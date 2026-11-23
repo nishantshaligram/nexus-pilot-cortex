@@ -1,19 +1,19 @@
 """
-NexusPilot Cortex - Gemini Prefix Cache & Headroom Aligner
-Optimizes context ordering and monitors token headroom to avoid context cliffs.
+NexusPilot Cortex - Gemini Prefix Cache & capacity Aligner
+Optimizes context ordering and monitors token capacity to avoid context cliffs.
 """
 
 from typing import Dict, Any, List
 
 
-class CacheAndHeadroomAligner:
-    def __init__(self, context_limit: int = 1_000_000, headroom_warning_pct: float = 75.0):
+class CacheAndContextAligner:
+    def __init__(self, context_limit: int = 1_000_000, capacity_warning_pct: float = 75.0):
         self.context_limit = context_limit
-        self.headroom_warning_pct = headroom_warning_pct
+        self.capacity_warning_pct = capacity_warning_pct
 
-    def check_headroom(self, current_tokens: int) -> Dict[str, Any]:
+    def check_budget(self, current_tokens: int) -> Dict[str, Any]:
         """
-        Evaluates remaining context headroom.
+        Evaluates remaining context capacity.
         Returns status ('SAFE', 'WARNING', 'CRITICAL') and recommended actions.
         """
         usage_pct = (current_tokens / self.context_limit) * 100.0 if self.context_limit > 0 else 0.0
@@ -22,12 +22,12 @@ class CacheAndHeadroomAligner:
         if usage_pct >= 90.0:
             status = "CRITICAL"
             recommendation = "Immediate context compaction required. Squash resolved tool calls and summarize earlier turns."
-        elif usage_pct >= self.headroom_warning_pct:
+        elif usage_pct >= self.capacity_warning_pct:
             status = "WARNING"
-            recommendation = "Headroom threshold reached. Recommend collapsing older conversation turns."
+            recommendation = "Capacity threshold reached. Recommend collapsing older conversation turns."
         else:
             status = "SAFE"
-            recommendation = "Headroom optimal. Prefix caching active."
+            recommendation = "Context capacity optimal. Prefix caching active."
 
         return {
             "current_tokens": current_tokens,

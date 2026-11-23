@@ -14,7 +14,7 @@ if SERVER_DIR not in sys.path:
 
 from telemetry import TelemetryTracker, render_badge, estimate_token_count, format_token_number
 from memory import MemoryStore, MemoryDatabase, extract_facts_from_text
-from compressor import compress_output, collapse_repeated_lines, fold_stack_traces, CacheAndHeadroomAligner
+from compressor import compress_output, collapse_repeated_lines, fold_stack_traces, CacheAndContextAligner
 
 
 class TestCortex(unittest.TestCase):
@@ -79,11 +79,11 @@ class TestCortex(unittest.TestCase):
         compressed, metrics = compress_output(noisy_text, max_chars=300)
         self.assertGreater(metrics["reduction_pct"], 30.0)
 
-    def test_headroom_aligner(self):
-        aligner = CacheAndHeadroomAligner(context_limit=1_000_000, headroom_warning_pct=75.0)
-        self.assertEqual(aligner.check_headroom(100_000)["status"], "SAFE")
-        self.assertEqual(aligner.check_headroom(800_000)["status"], "WARNING")
-        self.assertEqual(aligner.check_headroom(950_000)["status"], "CRITICAL")
+    def test_context_aligner(self):
+        aligner = CacheAndContextAligner(context_limit=1_000_000, capacity_warning_pct=75.0)
+        self.assertEqual(aligner.check_budget(100_000)["status"], "SAFE")
+        self.assertEqual(aligner.check_budget(800_000)["status"], "WARNING")
+        self.assertEqual(aligner.check_budget(950_000)["status"], "CRITICAL")
 
 
 if __name__ == "__main__":

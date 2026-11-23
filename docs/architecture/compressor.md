@@ -1,6 +1,6 @@
-# Architecture: Context & Headroom Compressor
+# Architecture: Context & capacity Compressor
 
-The Compressor brings **headroom parity** to Antigravity, eliminating context cliffs, minimizing prompt tokens, and maximizing Gemini prefix caching hit rates.
+The Compressor brings **adaptive context compression** to Antigravity, eliminating context cliffs, minimizing prompt tokens, and maximizing Gemini prefix caching hit rates.
 
 ---
 

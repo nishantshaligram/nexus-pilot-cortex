@@ -1,6 +1,6 @@
 ---
 name: memory-governor
-description: Persistent cross-session and cross-workspace memory management (claude-mem parity), autonomous fact learning, and progressive context injection.
+description: Persistent cross-session and cross-workspace memory management (NexusMem autonomous persistence), autonomous fact learning, and progressive context injection.
 ---
 
 # Memory Governor

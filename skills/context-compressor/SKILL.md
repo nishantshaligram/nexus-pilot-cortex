@@ -1,15 +1,15 @@
 ---
 name: context-compressor
-description: Adaptive context compression (headroom parity), tool output reduction, stack trace folding, and prefix cache alignment for Antigravity.
+description: Adaptive context compression (Adaptive Context Compression), tool output reduction, stack trace folding, and prefix cache alignment for Antigravity.
 ---
 
-# Context Compressor & Headroom Governor
+# Context Compressor & capacity governor
 
 This skill protects the context window from token bloat, reduces inference costs, and maintains high prompt cache hit ratios.
 
 ## When to Use
 - Compacting large command line outputs (e.g., test runner logs, compiler output, stack traces).
-- Checking remaining token headroom before initiating long multi-agent chains.
+- Checking remaining token capacity before initiating long multi-agent chains.
 - Restructuring prompt context to preserve Gemini / Antigravity prefix caching.
 
 ## Compression Strategies
@@ -20,4 +20,4 @@ This skill protects the context window from token bloat, reduces inference costs
 
 ## Key Tools
 - `compress_tool_output(raw_output, max_chars)`: Compresses noisy outputs.
-- `check_context_headroom(current_tokens, context_limit)`: Returns SAFE, WARNING, or CRITICAL status.
+- `check_context_budget(current_tokens, context_limit)`: Returns SAFE, WARNING, or CRITICAL status.

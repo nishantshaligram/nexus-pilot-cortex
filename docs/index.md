@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "NexusPilot Cortex"
   text: "Cognitive Telemetry, Memory & Compression Engine"
-  tagline: "Per-response token badges, claude-mem persistent memory, and headroom context compression for AI coding agents."
+  tagline: "Per-response token badges, NexusMem persistent memory, and capacity context compression for AI coding agents."
   image:
     src: /assets/logo.svg
     alt: NexusPilot Cortex Logo
@@ -25,10 +25,10 @@ features:
     details: Instant visibility into prompt tokens, cached tokens, completion tokens, latency, speed (tok/s), and real-time USD cost on every turn.
   - icon: 🧠
     title: Autonomous Long-Term Memory
-    details: Zero-effort learning parity with claude-mem. Auto-extracts preferences, project architecture, and negative constraints into a local SQLite store.
+    details: Zero-effort learning parity with NexusMem. Auto-extracts preferences, project architecture, and negative constraints into a local SQLite store.
   - icon: ⚡
     title: Adaptive Context Compressor
-    details: Headroom-style output compaction. Collapses repetitive logs, folds framework stack frames, and aligns prefix caching to cut 35–65% of billed tokens.
+    details: Adaptive output compaction. Collapses repetitive logs, folds framework stack frames, and aligns prefix caching to cut 35–65% of billed tokens.
   - icon: 🌐
     title: Multi-Agent & IDE Ecosystem
     details: Universal support for Google Antigravity, Claude Code, Claude Desktop, Cursor IDE, Windsurf, and any standard MCP client.

@@ -50,7 +50,7 @@ The agent retrieves the memory node and uses `pnpm build` without you ever havin
 
 ---
 
-## 4. Context Headroom Compression
+## 4. context capacity Compression
 When running a test suite with hundreds of noisy output lines:
 > *"Compress this test output using compress_tool_output."*
 
