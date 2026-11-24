@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: "NexusPilot Cortex"
+  name: "NexusPilot: Cortex"
   text: "Cognitive Telemetry, Memory & Compression Engine"
   tagline: "Per-response token badges, NexusMem persistent memory, and capacity context compression for AI coding agents."
   image:
     src: /assets/logo.svg
-    alt: NexusPilot Cortex Logo
+    alt: "NexusPilot: Cortex Logo"
   actions:
     - theme: brand
       text: Get Started
